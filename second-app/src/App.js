@@ -17,6 +17,9 @@ const App = () => {
   const addToGood = () => setGood(good+1)
   const addToNeutral = () => setNeutral(neutral+1)
   const addToBad = () => setBad(bad+1)
+  const total = () => good+neutral+bad
+  const avg = () => total()/3
+  const pos = () => good/total()*100
 
   return (
     <div>
@@ -29,6 +32,9 @@ const App = () => {
       <Display value={"good " + good} />
       <Display value={"neutral " + neutral} />
       <Display value={"bad " + bad} />
+      <Display value={"all " + total()} />
+      <Display value={"average " + avg()} />
+      <Display value={"positive " + pos() + "%"} />
     </div>
   )
 }
