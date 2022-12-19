@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
-const Display = props => props.isHeading ? <div><h2>{props.value}</h2></div> : <div>{props.value}</div> 
+const Heading = props => <div><h2>{props.value}</h2></div>
+const StatisticLine = props => <div>{props.value}</div> 
+ 
 
 const Button = (props) => (
   <button onClick={props.handleClick}>
@@ -20,13 +22,13 @@ const Statistics = ({good, neutral, bad}) => {
   const pos = () => good/total()*100
   return(
     <>
-      <Display value="statistics" isHeading />
-      <Display value={"good " + good} />
-      <Display value={"neutral " + neutral} />
-      <Display value={"bad " + bad} />
-      <Display value={"all " + total()} />
-      <Display value={"average " + avg()} />
-      <Display value={"positive " + pos() + "%"} />
+      <Heading value="statistics" />
+      <StatisticLine value={"good " + good} />
+      <StatisticLine value={"neutral " + neutral} />
+      <StatisticLine value={"bad " + bad} />
+      <StatisticLine value={"all " + total()} />
+      <StatisticLine value={"average " + avg()} />
+      <StatisticLine value={"positive " + pos() + "%"} />
     </>
   )
 }
@@ -43,7 +45,7 @@ const App = () => {
 
   return (
     <div>
-      <Display value="give feedback" isHeading />
+      <Heading value="give feedback" />
       <Button handleClick={addToGood} text="good" />
       <Button handleClick={addToNeutral} text="neutral" />
       <Button handleClick={addToBad} text="bad" />
