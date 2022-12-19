@@ -10,6 +10,7 @@ const Button = (props) => (
 
 const Statistics = ({good, neutral, bad}) => {
   const total = () => good+neutral+bad
+  if(total() <= 0) return(<p>No feedback given</p>);
   const avg = () => {
     // the average score (good: 1, neutral: 0, bad: -1)
     let avg = good * 1 + bad * -1;
