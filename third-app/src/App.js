@@ -15,6 +15,8 @@ const Button = (props) => (
     {props.text}
   </button>
 )
+
+const Heading = props => <div><h2>{props.value}</h2></div>
  
 const Anecdote = ({number}) =>{
   let anecdoteIndex = number % anecdotes.length
@@ -43,10 +45,13 @@ const App = () => {
 
   return (
     <div>
+      <Heading value="Anecdote of the day" />
       <Anecdote number={anecdoteNumber} />
       <Votes voteCount={votes[anecdoteNumber % anecdotes.length]} />
       <Button handleClick={voteForAnecdote} text="vote" />
       <Button handleClick={nextAnecdote} text="next anecdote" />
+      <Heading value="Anecdote with most votes" />
+      <Anecdote number={[...votes].indexOf(Math.max(...votes))} />
     </div>
   )
 }
